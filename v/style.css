@@ -1,0 +1,126 @@
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
+  height: 100%;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory; /* Locks sections into place */
+}
+
+.video-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+  overflow: hidden;
+  background: black;
+}
+
+.video-bg video {
+    width: 100vw;   /* Force width to 100% of viewport */
+    height: 100vh;  /* Force height to 100% of viewport */
+    object-fit: cover; /* This prevents stretching by cropping edges instead */
+    object-position: center; /* Keeps the center of the video in view */
+  }
+
+.video-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.2); 
+  z-index: -1;
+}
+
+section {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 20px;
+  scroll-snap-align: start;
+}
+
+/* Glassmorphism Card */
+.card {
+  background: rgba(255, 255, 255, 0.5); 
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 40px;
+  border-radius: 28px;
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  max-width: 420px;
+  text-align: center;
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card p {
+  color: #2e7d32; 
+  font-weight: 600;
+  font-size: 19px;
+  line-height: 1.6;
+}
+
+.scroll-btn {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: none;
+  border: none;
+  font-size: 34px;
+  cursor: pointer;
+  animation: bounce 1.5s infinite;
+  color: #2e7d32;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, -10px); }
+}
+
+.valentine-btn {
+  margin-top: 20px;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 25px;
+  background: #2e7d32;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  14% { transform: scale(1.03); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.03); }
+  70% { transform: scale(1); }
+}
+#progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 6px; /* A bit thicker for visibility */
+  background: #2e7d32; /* Your theme's green */
+  width: 0%; /* Starts at zero */
+  z-index: 1000; /* Stays above everything */
+  transition: width 0.2s ease-out;
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
+}
